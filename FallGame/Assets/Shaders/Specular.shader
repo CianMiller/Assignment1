@@ -43,17 +43,16 @@ vertexOutput vert(vertexInput v)
 }
 
 
-// fragment function
 float4 frag(vertexOutput i) : COLOR
 {
-// vectors
+
     float3 normalDirection = i.normalDir;
     float atten = 1.0;
-// lighting
+
     float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
     float3 diffuseReflection = atten * _LightColor0.xyz * max(0.0, dot(normalDirection,
 lightDirection));
-// specular direction
+
     float3 lightReflectDirection = reflect(-lightDirection, normalDirection);
     float3 viewDirection = normalize(float3(float4(_WorldSpaceCameraPos.xyz, 1.0) -
 i.posWorld.xyz));
